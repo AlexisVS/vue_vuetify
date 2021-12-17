@@ -1,32 +1,35 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app class="blue">
+      <v-row>
+        <v-col align-self="center">
+          <v-app-bar-nav-icon class="white--text" @click="drawer = !drawer" />
+        </v-col>
+        <v-col align-self="center">
+          <v-switch></v-switch>
+        </v-col>
+      </v-row>
+    </v-app-bar>
+    <v-navigation-drawer app v-model="drawer" class="blue lighten-4">
+      <nav></nav>
+    </v-navigation-drawer>
+    <v-main>
+      <v-container>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// import image from './assets/logo.svg'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name: 'App',
+  data () {
+    return {
+      drawer: false,
     }
-  }
-}
-</style>
+  },
+};
+</script>
